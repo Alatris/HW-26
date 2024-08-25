@@ -27,7 +27,6 @@ function handleButtonClick(buttonId, message) {
     }
 }
 
-
 // Демонстрація використання функції (припустимо, що HTML містить кнопку з ID 'myButton')
 // handleButtonClick('myButton', 'Button clicked!');
 
@@ -45,12 +44,38 @@ function handleButtonClick(buttonId, message) {
  */
 
 function trackMousePosition() {
+    let position = { x: 0, y: 0 };
+
     document.addEventListener('mousemove', (event) => {
-        const { clientX, clientY } = event;
-        console.log(`Mouse X: ${clientX}, Mouse Y: ${clientY}`);
+        position.x = event.clientX;
+        position.y = event.clientY;
+        console.log(`Mouse X: ${position.x}, Mouse Y: ${position.y}`);
     });
+
+    return position;
 }
 
+const mousePosition = trackMousePosition();
+
+console.log(mousePosition);
+setInterval(() => {
+    if (mousePosition.x > 500) {
+        console.log('Курсор вийшов за межі екрану');
+    }
+}, 1000);
+// function trackMousePosition() {
+//     document.addEventListener('mousemove', (event) => {
+//         const { clientX, clientY } = event;
+//         return { x: clientX, y: clientY };
+//     });
+// }
+//
+// const mousePosition = trackMousePosition();
+// console.log(mousePosition);
+//
+// if (mousePosition.x > 500) {
+//     console.log('Курсор вийшов за межі екрану');
+// }
 
 // console.log(trackMousePosition())
 
@@ -92,8 +117,13 @@ function setupEventDelegation(selector) {
     }
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+    handleButtonClick('myButton', 'Button clicked!');
+    setupEventDelegation('#testList');
+    trackMousePosition(); // Отслеживание мыши
+});
 
-// setupEventDelegation('#testList')
+setupEventDelegation('#testList')
 
 // Експорт функції для використання та тестування
 export { handleButtonClick, trackMousePosition, setupEventDelegation }

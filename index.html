@@ -1,21 +1,20 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Homework</title>
 </head>
 <body>
-<script type="module">
-    import { handleButtonClick, trackMousePosition, setupEventDelegation } from './js/main.js';
+<button id="myButton">Click Me</button>
 
-    handleButtonClick('myButton', 'Button clicked!');
+<ul id="testList">
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+</ul>
 
-    console.log(trackMousePosition())
 
-    setupEventDelegation('#testList')
-</script>
+<script type="module" src="./js/main.js"></script>
 </body>
 </html>
